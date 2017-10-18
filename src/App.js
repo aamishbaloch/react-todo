@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {TodoForm} from "./components/todo/todoForm"
 
 class App extends Component {
     constructor(){
@@ -10,9 +11,18 @@ class App extends Component {
                 {id: 1, name: "Learn React", completed: true},
                 {id: 2, name: "Learn Python", completed: false},
                 {id: 3, name: "Learn Big Data", completed: false}
-            ]
-        }
+            ],
+            currentTodo: ""
+        },
+        this.handleInputChange = this.handleInputChange.bind(this)
     }
+
+    handleInputChange(event){
+        this.setState({
+            currentTodo: event.target.value
+        })
+    }
+
     render() {
         return (
           <div className="App">
@@ -22,7 +32,8 @@ class App extends Component {
             </header>
             <div className="todo-app">
 
-                <input type="text"/>
+                <TodoForm handleInputChange={this.handleInputChange}
+                          currentTodo={this.state.currentTodo}/>
 
                 <div className="todo-list">
                     <ul>
