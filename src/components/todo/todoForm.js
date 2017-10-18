@@ -10,4 +10,3 @@ export const TodoForm = (props) => (
                onChange={props.handleInputChange}/>
     </form>
 )
-
